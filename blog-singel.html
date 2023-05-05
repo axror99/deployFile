@@ -446,6 +446,36 @@
 <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
 
 <!--====== BACK TO TP PART ENDS ======-->
+
+<script>
+
+    function getInformationFromService() {
+
+        var options = {year: 'numeric', month: 'long', day: 'numeric'};
+        var today = new Date().toLocaleDateString('en-US', options);
+
+        fetch('https://edubin-axror.herokuapp.com/api/comment/blog/' + blogID, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: document.getElementById("inputId1").value,
+                lastName: document.getElementById("inputId2").value,
+                date: today,
+                text: document.getElementById("commentId").value,
+            })
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+        document.getElementById("inputId1").value = "";
+        document.getElementById("inputId2").value = "";
+        document.getElementById("commentId").value = "";
+        location.reload();
+    }
+</script>
+
 <script>
     let urlParams = new URLSearchParams(window.location.search);
     let blogID = urlParams.get("blogId");
@@ -606,34 +636,6 @@
 
         })
 
-</script>
-<script>
-
-    function getInformationFromService() {
-
-        var options = {year: 'numeric', month: 'long', day: 'numeric'};
-        var today = new Date().toLocaleDateString('en-US', options);
-
-        fetch('https://edubin-axror.herokuapp.com/api/comment/blog/' + blogID, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                firstName: document.getElementById("inputId1").value,
-                lastName: document.getElementById("inputId2").value,
-                date: today,
-                text: document.getElementById("commentId").value,
-            })
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-        document.getElementById("inputId1").value = "";
-        document.getElementById("inputId2").value = "";
-        document.getElementById("commentId").value = "";
-        location.reload();
-    }
 </script>
 
 

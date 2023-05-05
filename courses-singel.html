@@ -567,6 +567,36 @@
 <!--====== BACK TO TP PART ENDS ======-->
 
 <script>
+    function getInformationFromService() {
+        const courseId1 = document.getElementById("hiddenVar").getAttribute("myCourseId");
+        console.log('idId :' + courseId1);
+
+        var options = {year: 'numeric', month: 'long', day: 'numeric'};
+        var today = new Date().toLocaleDateString('en-US', options);
+
+        fetch('https://edubin-axror.herokuapp.com/api/comment/course/' + courseId, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                firstName: document.getElementById("inputId1").value,
+                lastName: document.getElementById("inputId2").value,
+                date: today,
+                text: document.getElementById("commentId").value,
+            })
+        })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+        document.getElementById("inputId1").value = "";
+        document.getElementById("inputId2").value = "";
+        document.getElementById("commentId").value = "";
+        location.reload();
+    }
+</script>
+<script>
 
     const urlParams = new URLSearchParams(window.location.search);
     const courseId = urlParams.get('courseId');
@@ -918,36 +948,6 @@
     .catch((err)=>{
         console.log(err)
     })
-</script>
-<script>
-    function getInformationFromService() {
-        const courseId = document.getElementById("hiddenVar").getAttribute("myCourseId");
-        console.log('idId :' + courseId);
-
-        var options = {year: 'numeric', month: 'long', day: 'numeric'};
-        var today = new Date().toLocaleDateString('en-US', options);
-
-        fetch('https://edubin-axror.herokuapp.com/api/comment/course/' + courseId, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                firstName: document.getElementById("inputId1").value,
-                lastName: document.getElementById("inputId2").value,
-                date: today,
-                text: document.getElementById("commentId").value,
-            })
-        })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.error(error));
-        document.getElementById("inputId1").value = "";
-        document.getElementById("inputId2").value = "";
-        document.getElementById("commentId").value = "";
-        location.reload();
-    }
 </script>
 
 

@@ -424,6 +424,7 @@
     }
 
     let categoryName = "";
+    // fetch('http://localhost:8080/api/category/list')
     fetch('https://edubin-axror.herokuapp.com/api/category/list')
         .then((data) => data.json())
         .then((dataJson) => {
@@ -469,6 +470,7 @@
                 // let toImage = convertByteArrayToImage(oneBlog.videoBytes);
                 // console.log(toImage);
 
+                // let str2 = 'http://localhost:8080/api/image/' + oneBlog.picture;
                 let str2 = 'https://edubin-axror.herokuapp.com/api/image/' + oneBlog.picture;
 
                 imgTag.setAttribute('src', str2);
@@ -510,6 +512,7 @@
         ++categoryID;
     }
 
+    // fetch('http://localhost:8080/api/blog/list/page/' + (categoryID) + "/" + pageID)
     fetch('https://edubin-axror.herokuapp.com/api/blog/list/page/' + (categoryID) + "/" + pageID)
         .then((data) => data.json())
         .then((dataJson) => {
@@ -529,6 +532,7 @@
 
                 const img = document.createElement("img");
                 img.src = "https://edubin-axror.herokuapp.com/api/image/" + blog.picture;
+                // img.src = "http://localhost:8080/api/image/" + blog.picture;
                 img.alt = "Blog";
 
                 blogThumDiv.appendChild(img);

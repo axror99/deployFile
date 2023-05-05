@@ -171,7 +171,9 @@
                 <div class="col-lg-2 col-md-2 col-sm-3 col-4">
                     <div class="right-icon text-right">
                         <ul>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
+                            <div id="checkIfAdmin">
+                                <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
+                            </div>
                             <button type="submit" style="color: #ffc600;
                             border-color: #07294d;
                              background-color: #07294d;"
@@ -450,7 +452,42 @@
                 document.getElementById('name').innerText=dataJson.data.name;
                 const coursesGridRow =document.getElementById("course-foreach");
 
-                // <img src="images/course/cu-1.jpg" alt="Course">
+                let hereAdmin;
+                for(key in dataJson.data.roles){
+                    if (dataJson.data.roles[key].includes("SUPER_ADMIN")){
+                        hereAdmin=true;
+                        break;
+                    }
+                }
+                let checkAdmin = document.getElementById('checkIfAdmin');
+                if (hereAdmin){
+                    let a = document.createElement("a");
+                    a.href = "crud-category.html";
+                    let button1 = document.createElement("button");
+                    button1.type = "submit";
+                    button1.textContent = "Admin Profile";
+                    button1.style.color = "#ffc600";
+                    button1.style.borderColor = "#07294d";
+                    button1.style.backgroundColor = "#07294d";
+                    a.appendChild(button1);
+                    checkAdmin.appendChild(a);
+                }else {
+                    let lii = document.createElement("li");
+                    let a = document.createElement("a");
+                    a.href = "#";
+                    let i = document.createElement("i");
+                    i.classList.add("fa", "fa-shopping-bag");
+                    let span = document.createElement("span");
+                    span.textContent = "0";
+                    a.appendChild(i);
+                    a.appendChild(span);
+                    lii.appendChild(a);
+                    checkAdmin.appendChild(lii);
+                }
+
+
+
+
                 for (key in dataJson.data.courses) {
                     const course = dataJson.data.courses[key];
 

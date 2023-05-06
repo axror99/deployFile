@@ -950,13 +950,13 @@
 <script>
 
   function getInformationFromService() {
-    const courseId =document.getElementById("hiddenVar").getAttribute("myCourseId");
-    // console.log('idId :'+courseId);
-
+    const courseId1 =document.getElementById("hiddenVar").getAttribute("myCourseId");
+    console.log('idId :'+courseId1);
+    console.log(courseId)
     var options = {year: 'numeric', month: 'long', day: 'numeric'};
     var today = new Date().toLocaleDateString('en-US', options);
 
-    fetch('https://edubin-axror.herokuapp.com/api/comment/course/'+courseId,{
+    fetch('https://edubin-axror.herokuapp.com/api/comment/course/'+courseId1,{
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -974,7 +974,7 @@
     document.getElementById("inputId1").value="";
     document.getElementById("inputId2").value="";
     document.getElementById("commentId").value="";
-    location.reload();
+    // location.reload();
   }
 </script>
 

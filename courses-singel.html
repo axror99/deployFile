@@ -570,7 +570,12 @@
 <!--====== BACK TO TP PART ENDS ======-->
 
 <script>
-    function getInformationFromService() {
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+   async function getInformationFromService() {
         const courseId1 = document.getElementById("hiddenVar").getAttribute("myCourseId");
         console.log('idId :' + courseId1);
         console.log(courseId);
@@ -597,7 +602,8 @@
         document.getElementById("inputId1").value = "";
         document.getElementById("inputId2").value = "";
         document.getElementById("commentId").value = "";
-        // location.reload();
+        await sleep(800);
+        location.reload();
     }
 </script>
 <script>

@@ -452,8 +452,10 @@
 <!--====== BACK TO TP PART ENDS ======-->
 
 <script>
-
-    function getInformationFromService() {
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function getInformationFromService() {
 
         var options = {year: 'numeric', month: 'long', day: 'numeric'};
         var today = new Date().toLocaleDateString('en-US', options);
@@ -476,6 +478,7 @@
         document.getElementById("inputId1").value = "";
         document.getElementById("inputId2").value = "";
         document.getElementById("commentId").value = "";
+        await sleep(800);
         location.reload();
     }
 </script>

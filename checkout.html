@@ -131,6 +131,7 @@
     let status1;
 
     function sendBuy() {
+        let token = localStorage.getItem('access_token');
         console.log(courseId);
         fetch('https://edubin-axror.herokuapp.com/buy/'+courseId, {
             method: 'POST',

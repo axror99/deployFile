@@ -52,7 +52,7 @@
 <body>
 <script>
     let token = localStorage.getItem('access_token');
-    fetch('http://localhost:8080/buy/check',{
+    fetch('https://edubin-axror.herokuapp.com/buy/check',{
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -134,7 +134,7 @@
 
     function sendBuy() {
         console.log(bookId);
-        fetch('http://localhost:8080/buy/book/'+bookId, {
+        fetch('https://edubin-axror.herokuapp.com/buy/book/'+bookId, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

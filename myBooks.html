@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--====== Title ======-->
-    <title>Edubin - LMS Education HTML Template</title>
+    <title>MyBooks</title>
 
     <!--====== Favicon Icon ======-->
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
@@ -110,7 +110,7 @@
                             </div>
                         </div>
                         <div class="button float-left">
-<!--                            <a href="#" class="main-btn">Apply Now</a>-->
+                            <!--                            <a href="#" class="main-btn">Apply Now</a>-->
                         </div>
                     </div>
                 </div>
@@ -172,7 +172,7 @@
                     <div class="right-icon text-right">
                         <ul>
                             <div id="checkIfAdmin">
-<!--                                <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>-->
+                                <!--                                <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>-->
                             </div>
                         </ul>
                     </div> <!-- right icon -->
@@ -262,28 +262,6 @@
                 </div>
             </div>
         </div> <!-- tab content -->
-
-<!--        <div class="row">-->
-<!--            <div class="col-lg-12">-->
-<!--                <nav class="courses-pagination mt-50">-->
-<!--                    <ul class="pagination justify-content-center">-->
-<!--                        <li class="page-item">-->
-<!--                            <a href="#" aria-label="Previous">-->
-<!--                                <i class="fa fa-angle-left"></i>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                        <li class="page-item"><a class="active" href="#">1</a></li>-->
-<!--                        <li class="page-item"><a href="#">2</a></li>-->
-<!--                        <li class="page-item"><a href="#">3</a></li>-->
-<!--                        <li class="page-item">-->
-<!--                            <a href="#" aria-label="Next">-->
-<!--                                <i class="fa fa-angle-right"></i>-->
-<!--                            </a>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </nav>  &lt;!&ndash; courses pagination &ndash;&gt;-->
-<!--            </div>-->
-<!--        </div>  &lt;!&ndash; row &ndash;&gt;-->
     </div>
     <div class="container">
         <div class="tab-content" >
@@ -422,176 +400,114 @@
     if ( token === undefined || token === null) {
         window.location.replace("login.html");
     }
-        // const urlParams = new URLSearchParams(window.location.search);
-        // const userId = urlParams.get('userId');
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const userId = urlParams.get('userId');
     // fetch('http://localhost:8080/home/course/'+token,{
-    fetch('https://edubin-axror.herokuapp.com/home/course/'+token,{
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'authorization': token
+        fetch('https://edubin-axror.herokuapp.com/home/course/'+token,{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'authorization': token
+        }
+    })
+        .then((data) => {
+            if (data.status===401) {
+                window.location.replace('register.html');
+            }else if (data.status===403){
+                console.log(data)
+                window.location.replace('login.html');
+            }
+            return data.json()
+        })
+        .then((dataJson) => {
+            console.log(dataJson);
+            document.getElementById('username').innerText=dataJson.data.username;
+            document.getElementById('email').innerText=dataJson.data.email;
+            document.getElementById('name').innerText=dataJson.data.name;
+            const coursesGridRow =document.getElementById("course-foreach");
+
+            let checkAdmin = document.getElementById('checkIfAdmin');
+            let a = document.createElement("a");
+            a.href = "user-profile.html";
+            let button1 = document.createElement("button");
+            button1.type = "submit";
+            button1.textContent = "Your Profile";
+            button1.style.color = "#ffc600";
+            button1.style.borderColor = "#07294d";
+            button1.style.backgroundColor = "#07294d";
+            a.appendChild(button1);
+            checkAdmin.appendChild(a);
+
+            let temp = document.getElementById('for-each-merchandise');
+            for (key in dataJson.data.merchandises){
+                const product=dataJson.data.merchandises[key];
+                const outerDiv = document.createElement("div");
+                outerDiv.classList.add("col-lg-3", "col-md-6", "col-sm-8");
+
+                const innerDiv = document.createElement("div");
+                innerDiv.classList.add("singel-publication", "mt-30");
+
+                const image= document.createElement('div');
+                image.classList.add("image");
+
+                const img = document.createElement("img");
+                img.src = 'https://edubin-axror.herokuapp.com/api/image/'+product.picture;
+                // img.src = 'http://localhost:8080/api/image/'+product.picture;
+                img.width=280;
+                img.height=280;
+                img.alt = "Publication";
+
+                const addCartDiv = document.createElement("div");
+                addCartDiv.classList.add("add-cart");
+
+                image.appendChild(img);
+                image.appendChild(addCartDiv);
+                // create cont div with child elements
+                const contDiv = document.createElement("div");
+                contDiv.classList.add("cont");
+
+                const nameDiv = document.createElement("div");
+                nameDiv.classList.add("name");
+
+                const nameLink = document.createElement("a");
+                nameLink.href = "#";
+
+                const nameHeader = document.createElement("h6");
+                let substring =  product.headline.substring(0, 25) + " ...";
+                nameHeader.textContent = substring;
+                nameLink.appendChild(nameHeader);
+
+                const nameSpan = document.createElement("span");
+                nameSpan.textContent = "$"+product.price;
+
+                nameDiv.appendChild(nameLink);
+                nameDiv.appendChild(nameSpan);
+
+                const buttonDiv = document.createElement("div");
+                buttonDiv.classList.add("button", "text-right");
+
+                const buttonLink = document.createElement("a");
+                buttonLink.href = "shop-singel.html?pageId="+product.id;
+                buttonLink.classList.add("main-btn");
+                buttonLink.textContent = "Buy Now";
+
+                buttonDiv.appendChild(buttonLink);
+
+                contDiv.appendChild(nameDiv);
+                contDiv.appendChild(buttonDiv);
+
+                // append child elements to parent elements
+                // addCartDiv.appendChild(img);
+                innerDiv.appendChild(image);
+                innerDiv.appendChild(contDiv);
+                outerDiv.appendChild(innerDiv);
+                temp.appendChild(outerDiv);
             }
         })
-            .then((data) => {
-                if (data.status===401) {
-                    window.location.replace('register.html');
-                }else if (data.status===403){
-                    console.log(data)
-                    window.location.replace('login.html');
-                }
-                return data.json()
-            })
-            .then((dataJson) => {
-                console.log(dataJson);
-                document.getElementById('username').innerText=dataJson.data.username;
-                document.getElementById('email').innerText=dataJson.data.email;
-                document.getElementById('name').innerText=dataJson.data.name;
-                const coursesGridRow =document.getElementById("course-foreach");
-
-                let checkAdmin = document.getElementById('checkIfAdmin');
-                    let a = document.createElement("a");
-                    a.href = "user-profile.html";
-                    let button1 = document.createElement("button");
-                    button1.type = "submit";
-                    button1.textContent = "Your Profile";
-                    button1.style.color = "#ffc600";
-                    button1.style.borderColor = "#07294d";
-                    button1.style.backgroundColor = "#07294d";
-                    a.appendChild(button1);
-                    checkAdmin.appendChild(a);
-
-
-                for (key in dataJson.data.courses) {
-                    const course = dataJson.data.courses[key];
-
-                    let realTeacher;
-                    for(index11 in course.teacher){
-                        let oneHuman=course.teacher[index11];
-                        const hasTrue= oneHuman.roles.some(function(checkTeacher) {
-                            return checkTeacher.includes("TEACHER");
-                        });
-                        if (hasTrue){
-                            realTeacher=oneHuman;
-                        }
-                    }
-
-                    const col = document.createElement('div');
-                    col.classList.add('col-lg-4', 'col-md-6');
-
-                    const singelCourse = document.createElement('div');
-                    singelCourse.classList.add('singel-course', 'mt-30');
-
-                    const thum = document.createElement('div');
-                    thum.classList.add('thum');
-
-                    const image = document.createElement('div');
-                    image.classList.add('image');
-                    const img = document.createElement('img');
-
-                    img.src = 'https://edubin-axror.herokuapp.com/api/image/'+course.image;
-                    // img.src = 'http://localhost:8080/api/image/'+course.image;
-                    img.alt = 'course-Avatar';
-                    image.appendChild(img);
-
-                    const price = document.createElement('div');
-                    price.classList.add('price');
-                    const span = document.createElement('span');
-                    span.textContent= 'OK';
-                    price.appendChild(span);
-
-                    thum.appendChild(image);
-                    thum.appendChild(price);
-
-                    const cont = document.createElement('div');
-                    cont.classList.add('cont');
-
-                    const ul = document.createElement('ul');
-
-                    for (let i = 0; i < 5; i++) {
-                        const li = document.createElement('li');
-                        const iElement = document.createElement('i');
-                        iElement.classList.add('fa', 'fa-star');
-                        li.appendChild(iElement);
-                        ul.appendChild(li);
-                    }
-                    const reviewsCount = document.createElement('span');
-                    reviewsCount.textContent = `(20  Reviews)`;
-
-                    const titleLink = document.createElement('a');
-                    // titleLink.href = course.link;
-                    titleLink.href = 'myBuyedCourse.html?courseId='+course.id;
-                    const title = document.createElement('h4');
-                    title.textContent = course.name;
-                    titleLink.appendChild(title);
-
-                    const courseTeacher = document.createElement('div');
-                    courseTeacher.classList.add('course-teacher');
-
-                    const teacherThum = document.createElement('div');
-                    teacherThum.classList.add('thum');
-                    const teacherImg = document.createElement('img');
-
-                    teacherImg.src = 'https://edubin-axror.herokuapp.com/api/image/'+realTeacher.picture;
-                    // teacherImg.src = 'http://localhost:8080/api/image/'+realTeacher.picture;
-                    teacherImg.alt = 'avatar';
-                    teacherThum.appendChild(teacherImg);
-
-                    const teacherName = document.createElement('div');
-                    teacherName.classList.add('name');
-                    const teacherNameLink = document.createElement('a');
-                    const teacherNameH6 = document.createElement('h6');
-                    teacherNameH6.textContent = realTeacher.name;
-                    teacherNameLink.appendChild(teacherNameH6);
-                    teacherName.appendChild(teacherNameLink);
-
-                    const admin = document.createElement('div');
-                    admin.classList.add('admin');
-                    const adminUl = document.createElement('ul');
-
-                    const studentsCountLi = document.createElement('li');
-                    const studentsCountLink = document.createElement('a');
-                    const studentsCountIcon = document.createElement('i');
-                    studentsCountIcon.classList.add('fa', 'fa-user');
-                    const studentsCountSpan = document.createElement('span');
-                    // studentsCountSpan.textContent = course.users;
-                    studentsCountSpan.textContent = course.teacher.length-1;
-                    studentsCountLink.appendChild(studentsCountIcon);
-                    studentsCountLink.appendChild(studentsCountSpan);
-                    studentsCountLi.appendChild(studentsCountLink);
-
-                    const likesCountLi = document.createElement('li');
-                    const likesCountLink = document.createElement('a');
-                    const likesCountIcon = document.createElement('i');
-                    likesCountIcon.classList.add('fa', 'fa-heart');
-                    const likesCountSpan = document.createElement('span');
-                    likesCountSpan.textContent = course.likes;
-                    likesCountLink.appendChild(likesCountIcon);
-                    likesCountLink.appendChild(likesCountSpan);
-                    likesCountLi.appendChild(likesCountLink);
-                    adminUl.appendChild(studentsCountLi);
-                    adminUl.appendChild(likesCountLi);
-                    admin.appendChild(adminUl);
-
-                    courseTeacher.appendChild(teacherThum);
-                    courseTeacher.appendChild(teacherName);
-                    courseTeacher.appendChild(admin);
-
-                    cont.appendChild(ul);
-                    cont.appendChild(reviewsCount);
-                    cont.appendChild(titleLink);
-                    cont.appendChild(courseTeacher);
-
-                    singelCourse.appendChild(thum);
-                    singelCourse.appendChild(cont);
-
-                    col.appendChild(singelCourse);
-                    coursesGridRow.appendChild(col);
-                }
-            })
-            .catch((err) => {
-                console.log(err)
-            })
+        .catch((err) => {
+            console.log(err)
+        })
 </script>
 
 <!--====== jquery js ======-->

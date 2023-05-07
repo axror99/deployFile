@@ -116,7 +116,8 @@
 
     function sendLogin() {
                     let status1;
-                    fetch('https://edubin-axror.herokuapp.com/api/auth/login',{
+                    // fetch('https://edubin-axror.herokuapp.com/api/auth/login',{
+                    fetch('http://localhost:8080/api/auth/login',{
                         method: 'POST',
                         headers: {
                             'Accept': 'application/json',
@@ -136,7 +137,8 @@
                                 console.log(dataJson)
                                 console.log(dataJson.data)
                                 localStorage.setItem('access_token', 'Bearer '+dataJson.data);
-                                window.location.replace('myCourses.html');
+                                window.location.replace('user-profile.html');
+                                // window.location.replace('myCourses.html');
                             } else {
                                 document.getElementById("username").value = "";
                                 document.getElementById("password").value = "";

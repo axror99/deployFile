@@ -177,7 +177,7 @@
         <div class="col-lg-2 col-md-2 col-sm-3 col-4">
           <div class="right-icon text-right">
             <ul>
-              <li><a href="user-profile.html"><i style='font-size:24px' class="fas">&#xf015;</i></a></li>
+              <div id="checkIfAdmin"></div>
             </ul>
           </div> <!-- right icon -->
         </div>
@@ -556,7 +556,20 @@
 <!--====== BACK TO TP PART START ======-->
 
 <a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<script>
+  let checkAdmin = document.getElementById('checkIfAdmin');
+  let a = document.createElement("a");
+  a.href = "user-profile.html";
+  let button1 = document.createElement("button");
+  button1.type = "submit";
+  button1.textContent = "Your Profile";
+  button1.style.color = "#ffc600";
+  button1.style.borderColor = "#07294d";
+  button1.style.backgroundColor = "#07294d";
+  a.appendChild(button1);
+  checkAdmin.appendChild(a);
 
+</script>
 <!--====== BACK TO TP PART ENDS ======-->
 <script>
   let token = localStorage.getItem('access_token');

@@ -194,8 +194,12 @@
     let ulrParam = new URLSearchParams(window.location.search);
     const courseID = ulrParam.get("courseId");
     console.log(courseID);
-
-    fetch('https://edubin-axror.herokuapp.com/api/course/get/'+courseID)
+    let token = localStorage.getItem('access_token');
+    fetch('https://edubin-axror.herokuapp.com/api/course/get/'+courseID,{
+        headers: {
+            'authorization': token
+        }
+    })
     .then(data=>data.json())
     .then((dataJson)=>{
         console.log(dataJson);

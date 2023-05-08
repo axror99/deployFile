@@ -250,7 +250,11 @@
   }
 
 
-  fetch('https://edubin-axror.herokuapp.com/home/me/'+token)
+  fetch('https://edubin-axror.herokuapp.com/home/me/'+token,{
+    headers: {
+      'Authorization': token
+    }
+  })
   .then(data=>data.json())
   .then((dataJson)=>{
     console.log(dataJson)

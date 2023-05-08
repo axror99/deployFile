@@ -246,9 +246,13 @@
         formData.append("headline", document.getElementById("courseHeadline").value);
         formData.append("definition", document.getElementById("courseDefinition").value);
 
+        let token = localStorage.getItem('access_token');
         fetch("https://edubin-axror.herokuapp.com/api/course/add", {
             method: "POST",
-            body: formData
+            body: formData,
+            headers: {
+                "Authorization": token
+            }
         })
             .then((response) => {
                 console.log(response.status);

@@ -368,74 +368,74 @@
 </body>
 
 <script>
-    fetch('https://edubin-axror.herokuapp.com/api/course/list')
-    .then(data=>data.json())
-    .then((dataJson)=>{
-        console.log(dataJson)
-        let categoryList = document.getElementById('foreach');
-        for (key in dataJson.data){
-            let course = dataJson.data[key];
-            // Create three new <td> elements
+    fetch('http://localhost:8080/api/course/list')
+        .then(data=>data.json())
+        .then((dataJson)=>{
+            console.log(dataJson)
+            let categoryList = document.getElementById('foreach');
+            for (key in dataJson.data){
+                let course = dataJson.data[key];
+                // Create three new <td> elements
 
-            const td1 = document.createElement("td");
-            const td2 = document.createElement("td");
-            const td4 = document.createElement("td");
-            const td3 = document.createElement("td");
+                const td1 = document.createElement("td");
+                const td2 = document.createElement("td");
+                const td4 = document.createElement("td");
+                const td3 = document.createElement("td");
 
-            td1.textContent = parseInt(key) + 1;
-            td2.textContent = course.name;
-            td4.textContent= course.category.name;
+                td1.textContent = parseInt(key) + 1;
+                td2.textContent = course.name;
+                td4.textContent= course.category.name;
 
-            const a1 = document.createElement("a");
-            a1.href = "ui-forms.html?courseId="+course.id;
-            a1.className = "edit";
-            // a1.setAttribute("data-toggle", "modal");
+                const a1 = document.createElement("a");
+                a1.href = "ui-forms.html?courseId="+course.id;
+                a1.className = "edit";
+                // a1.setAttribute("data-toggle", "modal");
 
-            const i1 = document.createElement("i");
-            i1.className = "material-icons";
-            i1.setAttribute("data-toggle", "tooltip");
-            i1.setAttribute("title", "Edit");
-            i1.onclick = function() {
-                submitName(course.name);
-            };
-            i1.textContent = "\uE254";
+                const i1 = document.createElement("i");
+                i1.className = "material-icons";
+                i1.setAttribute("data-toggle", "tooltip");
+                i1.setAttribute("title", "Edit");
+                i1.onclick = function() {
+                    submitName(course.name);
+                };
+                i1.textContent = "\uE254";
 
-            a1.appendChild(i1);
-            td3.appendChild(a1);
+                a1.appendChild(i1);
+                td3.appendChild(a1);
 
-            const a2 = document.createElement("a");
-            a2.href = "#deleteCategory";
-            a2.className = "delete";
-            a2.setAttribute("data-toggle", "modal");
+                const a2 = document.createElement("a");
+                a2.href = "#deleteCategory";
+                a2.className = "delete";
+                a2.setAttribute("data-toggle", "modal");
 
-            const i2 = document.createElement("i");
-            i2.className = "material-icons";
-            i2.setAttribute("data-toggle", "tooltip");
-            i2.setAttribute("title", "Delete");
-            i2.onclick = function() {
-                submitName(course.id);
-            };
-            i2.textContent = "\uE872";
+                const i2 = document.createElement("i");
+                i2.className = "material-icons";
+                i2.setAttribute("data-toggle", "tooltip");
+                i2.setAttribute("title", "Delete");
+                i2.onclick = function() {
+                    submitName(course.id);
+                };
+                i2.textContent = "\uE872";
 
-            a2.appendChild(i2);
-            td3.appendChild(a2);
+                a2.appendChild(i2);
+                td3.appendChild(a2);
 
-            const  a3= document.createElement("a");
-            a3.href = "ui-forms-course-contents.html?courseId="+course.id;
-            a3.textContent = "Contents";
+                const  a3= document.createElement("a");
+                a3.href = "ui-forms-course-contents.html?courseId="+course.id;
+                a3.textContent = "Contents";
 
-            td3.appendChild(a3);
-            const tr = document.createElement("tr");
-            tr.appendChild(td1);
-            tr.appendChild(td2);
-            tr.appendChild(td4);
-            tr.appendChild(td3);
-            categoryList.appendChild(tr);
-            categoryList.appendChild(tr);
-            categoryList.appendChild(tr);
-        }
-    })
-    .catch(err=>console.log(err))
+                td3.appendChild(a3);
+                const tr = document.createElement("tr");
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td4);
+                tr.appendChild(td3);
+                categoryList.appendChild(tr);
+                categoryList.appendChild(tr);
+                categoryList.appendChild(tr);
+            }
+        })
+        .catch(err=>console.log(err))
 </script>
 <script>
     let deleteCourseId=0;
@@ -444,9 +444,9 @@
         console.log(courseId)
     }
 
+    let token = localStorage.getItem('access_token');
     function deleteCategory(){
-        let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/course/delete/'+deleteCourseId,{
+        fetch('http://localhost:8080/api/course/delete/'+deleteCourseId,{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -457,7 +457,7 @@
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
-        // location.reload();
+        location.reload();
     }
 
 </script>

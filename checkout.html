@@ -159,7 +159,8 @@
                 console.log(data.status)
                 if (status1 === 200){
                     if (data.data!==null){
-                        window.location.replace('myCourses.html?userId='+data.data)
+                        window.location.replace('user-profile.html')
+                        // window.location.replace('myCourses.html?userId='+data.data)
                     }
                 } else if (status1 === 404){
                     alert('siz ma\'lumotlaringizni to\'g\'ri kiritmadingiz . To\'lovingiz amalga oshirilmadi !!! ')

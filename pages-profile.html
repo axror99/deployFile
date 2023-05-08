@@ -680,7 +680,10 @@
             console.log(id)
             employeeId = id;
         }
-        function updateEmployee() {
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function updateEmployee() {
             let checkboxes = document.getElementsByName("permission");
             let selectedValues = [];
             for (let i = 0; i < checkboxes.length; i++) {
@@ -713,6 +716,8 @@
             formData.append("myObjective", document.getElementById("myObjective").value);
             formData.append("roles", selectedValues2);
             formData.append("permissionList", selectedValues);
+            await sleep(2000);
+
             fetch('https://edubin-axror.herokuapp.com/api/employee/update/' + employeeId, {
                 method: "PUT",
                 headers: {

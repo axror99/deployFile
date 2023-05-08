@@ -632,17 +632,17 @@
     function addEmployee() {
 
         let checkboxes = document.getElementsByName("permission");
-        let selectedValues = [];
+        let selectedValues11 = [];
         for (let i = 0; i < checkboxes.length; i++) {
             if (checkboxes[i].checked) {
-                selectedValues.push(checkboxes[i].value);
+                selectedValues11.push(checkboxes[i].value);
             }
         }
         let checkboxes2 = document.getElementsByName("rolesList");
-        let selectedValues2 = [];
+        let selectedValues22 = [];
         for (let i = 0; i < checkboxes2.length; i++) {
             if (checkboxes2[i].checked) {
-                selectedValues2.push(checkboxes2[i].value);
+                selectedValues22.push(checkboxes2[i].value);
             }
         }
         let token = localStorage.getItem('access_token');
@@ -657,18 +657,8 @@
         formData.append("about", document.getElementById("about").value);
         formData.append("achievement", document.getElementById("achievement").value);
         formData.append("myObjective", document.getElementById("myObjective").value);
-        formData.append("roles", selectedValues2);
-        formData.append("permissionList", selectedValues);
-        // body: JSON.stringify({
-        //     name: document.getElementById("name").value,
-        //     username: document.getElementById("username").value,
-        //     password: document.getElementById("password").value,
-        //     email: document.getElementById("email").value,
-        //     birthday: document.getElementById("birthday").value,
-        //     roles: selectedValues2,
-        //     permissionList: selectedValues,
-        //     picture:document.getElementById("myFile").files[0]
-        // })
+        formData.append("roles", selectedValues22);
+        formData.append("permissionList", selectedValues11);
         fetch('https://edubin-axror.herokuapp.com/api/employee/add',{
                 method:"POST",
                 headers: {
@@ -714,7 +704,7 @@
             formData.append("password", document.getElementById("password1").value);
             formData.append("email", document.getElementById("email1").value);
             formData.append("birthday", document.getElementById("birthday1").value);
-            if (document.getElementById("myFile1").files[0]!==undefined){
+            if (document.getElementById("myFile1").files[0]!==null && document.getElementById("myFile1").files[0]!==undefined){
                 formData.append("picture", document.getElementById("myFile1").files[0]);
             }
             formData.append("profession", document.getElementById("profession1").value);

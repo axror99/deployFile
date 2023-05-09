@@ -248,8 +248,6 @@
   if ( token === undefined || token === null) {
     window.location.replace("login.html");
   }
-
-
   fetch('https://edubin-axror.herokuapp.com/home/me/'+token,{
     headers: {
       'Authorization': token
@@ -258,7 +256,7 @@
   .then(data=>data.json())
   .then((dataJson)=>{
     console.log(dataJson)
-    if (dataJson.data===null){
+    if (dataJson.data===null || dataJson.status!==200){
       window.location.replace("login.html");
     }
     let pic =document.getElementById('user-oldPicture');

@@ -256,7 +256,7 @@
   .then(data=>data.json())
   .then((dataJson)=>{
     console.log(dataJson)
-    if (dataJson.data===null || dataJson.status!==200){
+    if (dataJson.data===null){
       window.location.replace("login.html");
     }
     let pic =document.getElementById('user-oldPicture');

@@ -301,6 +301,10 @@
       document.getElementById('superAdmin').appendChild(link)
     }
   })
+  .catch(err=>{
+    console.log(err);
+    window.location.replace('login.html');
+  })
 </script>
 </html>
 <!--  <script type="text/javascript">-->

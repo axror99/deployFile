@@ -303,7 +303,8 @@
   })
   .catch(err=>{
     console.log(err);
-    window.location.replace('login.html');
+    localStorage.removeItem('access_token');
+    location.reload();
   })
 </script>
 </html>

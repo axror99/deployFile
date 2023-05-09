@@ -313,6 +313,7 @@
 </script>
 <script>
     function updateCourse(){
+        console.log(document.getElementById("courseDefinition").value);
         const formData = new FormData();
         formData.append("name", document.getElementById("courseName").value);
         let categ = document.getElementById("courseCategory").value;

@@ -307,6 +307,9 @@
   })
   .catch(err=>{
     console.log(err);
+    if (err.message === 'SyntaxError: Unexpected end of JSON input') {
+      window.location.href = 'login.html';
+    }
   })
 </script>
 </html>

@@ -256,7 +256,7 @@
   })
   .then(data=>{
     myStatus=data.status;
-   return  data.json()
+   return  data.json();
   })
   .then((dataJson)=>{
     console.log(dataJson)
@@ -305,8 +305,8 @@
       document.getElementById('superAdmin').appendChild(link)
     }
   })
-  // .catch(err=>{
-  //   console.log(err);
-  // })
+  .catch(err=>{
+    console.log(err);
+  })
 </script>
 </html>

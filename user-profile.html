@@ -120,12 +120,12 @@
       <div class="col-md-6">
         <div class="profile-head">
           <h5 id="user-name">
-            Kshiti Ghelani
+            ------- ------
           </h5>
           <h6 id="user-authority">
-            Web Developer and Designer
+            ----- ---- ---- --- ------
           </h6>
-          <p class="proile-rating">Birthday : <span id="user-birthday">7-iyun 1999 yil</span></p>
+          <p class="proile-rating">Birthday : <span id="user-birthday">-- ----  ----  ----</span></p>
           <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
@@ -256,6 +256,7 @@
   .then(data=>data.json())
   .then((dataJson)=>{
     console.log(dataJson)
+    console.log(dataJson.status)
     if (dataJson.data===null){
       // window.location.replace("login.html");
     }

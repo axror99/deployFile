@@ -253,10 +253,12 @@
       'Authorization': token
     }
   })
-  .then(data=>data.json())
+  .then(data=>{
+    console.log(data.status)
+   return  data.json()
+  })
   .then((dataJson)=>{
     console.log(dataJson)
-    console.log(dataJson.status)
     if (dataJson.data===null){
       // window.location.replace("login.html");
     }

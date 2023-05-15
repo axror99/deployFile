@@ -320,6 +320,8 @@
     function myFunction(){
         let token = localStorage.getItem('access_token');
         let contentId = document.getElementById('contentId').value;
+        console.log("axror")
+        console.log(contentId)
         fetch('https://edubin-axror.herokuapp.com/api/content/delete/'+contentId,{
             method:"DELETE",
             headers:{
@@ -331,7 +333,7 @@
             .then(data=>data.json())
             .then((data)=>{console.log(data)})
             .catch(err=>console.log(err))
-        location.reload()
+        // location.reload()
     }
 </script>
 

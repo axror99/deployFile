@@ -256,7 +256,11 @@
   })
   .then(data=>{
     myStatus=data.status;
-   return  data.json();
+    if (data.status===200){
+      return  data.json();
+    }else {
+      window.location.replace('login.html')
+    }
   })
   .then((dataJson)=>{
     console.log(dataJson)
@@ -307,9 +311,7 @@
   })
   .catch(err=>{
     console.log(err);
-    if (err.message === 'SyntaxError: Unexpected end of JSON input') {
-      window.location.href = 'login.html';
-    }
+
   })
 </script>
 </html>

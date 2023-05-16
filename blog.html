@@ -517,8 +517,13 @@
         ++categoryID;
     }
 
-    // fetch('http://localhost:8080/api/blog/list/page/' + (categoryID) + "/" + pageID)
-    fetch('https://edubin-axror.herokuapp.com/api/blog/list/page/' + (categoryID) + "/" + pageID)
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    async function fetchWithPause() {
+        await sleep(3000);
+
+        fetch('https://edubin-axror.herokuapp.com/api/blog/list/page/' + (categoryID) + "/" + pageID)
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson.data)
@@ -614,6 +619,8 @@
                 foreach.appendChild(div);
             }
         })
+    }
+    fetchWithPause();
 
     function convertByteArrayToImage(byteArray) {
         let blob = new Blob([byteArray], {type: 'image/jpeg'}); // replace 'image/jpeg' with your image type

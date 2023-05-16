@@ -435,9 +435,9 @@
         .then((dataJson) => {
             console.log(dataJson.data)
             if (categoryID === 0) {
-                categoryName = dataJson.data[categoryID].name;
+                categoryName = 'Backend';
             } else if (categoryID === 1) {
-                categoryName = dataJson.data[categoryID].name;
+                categoryName = 'Backend';
                 // for (index22 in dataJson.data){
                 //     if (dataJson.data[index22].id===categoryID){
                 //         categoryName = dataJson.data[categoryID - 1].name;
@@ -445,9 +445,9 @@
                 //     }
                 // }
             }else if (categoryID === 2){
-                categoryName = dataJson.data[categoryID-1].name;
+                categoryName = 'Frontend';
             }else if (categoryID === 3){
-                categoryName = dataJson.data[categoryID-1].name;
+                categoryName = 'Graphic designer';
             }
             let categoryList = document.getElementById('category-foreach');
             for (let i = 0; i < dataJson.data.length; i++) {

@@ -435,8 +435,8 @@
         .then((dataJson) => {
             console.log(dataJson.data)
             if (categoryID === 0) {
-                categoryName = 'Backend';
-            } else if (categoryID === 1) {
+                categoryName = dataJson.data[categoryID].name;
+            } else if (categoryID === '1') {
                 categoryName = 'Backend';
                 // for (index22 in dataJson.data){
                 //     if (dataJson.data[index22].id===categoryID){

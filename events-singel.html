@@ -471,7 +471,7 @@
             ];
             const monthIndex = dataJson.data.date[1];
             const year = dataJson.data.date[0];
-            document.getElementById('eventDate').innerHTML = `${day} ${monthNames[monthIndex]} ${year}`;
+            document.getElementById('eventDate').innerHTML = `${day} ${monthNames[monthIndex-1]} ${year}`;
 
             const strFtime = "" + dataJson.data.finishTime[0] + ":" + dataJson.data.finishTime[1] + ":" + dataJson.data.finishTime[2];
             const [fhours, fminutes] = strFtime.split(":");
@@ -495,7 +495,7 @@
             evenPic.setAttribute('height', '280');
 
             // set the target date and time
-            var targetDate = new Date(monthNames[monthIndex]+''+day+','+ year+' '+formEndTime).getTime();
+            var targetDate = new Date(monthNames[monthIndex-1]+''+day+','+ year+' '+formEndTime).getTime();
 
             // update the countdown timer every second
             var countdown = setInterval(function () {

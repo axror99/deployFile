@@ -428,7 +428,7 @@
                 const monthIndex = event.date[1];
                 const year = event.date[0];
 
-                const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
+                const formattedDate = `${day} ${monthNames[monthIndex-1]} ${year}`;
                 span1.appendChild(document.createTextNode(formattedDate));
                 div4.appendChild(span1);
 

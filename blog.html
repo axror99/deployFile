@@ -499,7 +499,7 @@
                 const monthIndex = oneBlog.date[1];
                 const year = oneBlog.date[0];
 
-                spanTag.textContent = `${day} ${monthNames[monthIndex]} ${year}`;
+                spanTag.textContent = `${day} ${monthNames[monthIndex-1]} ${year}`;
 
                 contDiv.appendChild(h6Tag);
                 contDiv.appendChild(spanTag);
@@ -572,7 +572,7 @@
                 const monthIndex = blog.date[1];
                 const year = blog.date[0];
 
-                const formattedDate = `${day} ${monthNames[monthIndex]} ${year}`;
+                const formattedDate = `${day} ${monthNames[monthIndex-1]} ${year}`;
                 a1.appendChild(document.createTextNode(formattedDate));
                 li1.appendChild(a1);
                 ul.appendChild(li1);

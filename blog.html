@@ -521,7 +521,7 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     }
     async function fetchWithPause() {
-        await sleep(500);
+        await sleep(850);
 
         fetch('https://edubin-axror.herokuapp.com/api/blog/list/page/' + (categoryID) + "/" + pageID)
         .then((data) => data.json())

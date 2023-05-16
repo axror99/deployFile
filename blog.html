@@ -428,27 +428,27 @@
         categoryID = 0;
     }
 
-    let categoryName = "";
+
     // fetch('http://localhost:8080/api/category/list')
     fetch('https://edubin-axror.herokuapp.com/api/category/list')
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson.data)
-            if (categoryID === 0) {
-                categoryName = dataJson.data[categoryID].name;
-            } else if (categoryID === '1') {
-                categoryName = 'Backend';
+            // if (categoryID === 0) {
+            //     categoryName = dataJson.data[categoryID].name;
+            // } else if (categoryID === '1') {
+            //     categoryName = 'Backend';
                 // for (index22 in dataJson.data){
                 //     if (dataJson.data[index22].id===categoryID){
                 //         categoryName = dataJson.data[categoryID - 1].name;
                 //         break;
                 //     }
                 // }
-            }else if (categoryID === 2){
-                categoryName = 'Frontend';
-            }else if (categoryID === 3){
-                categoryName = 'Graphic designer';
-            }
+            // }else if (categoryID === 2){
+            //     categoryName = 'Frontend';
+            // }else if (categoryID === 3){
+            //     categoryName = 'Graphic designer';
+            // }
             let categoryList = document.getElementById('category-foreach');
             for (let i = 0; i < dataJson.data.length; i++) {
                 const category = dataJson.data[i];
@@ -532,7 +532,9 @@
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson.data)
-
+            let categoryName = "";
+            const categoryFor = ["Backend", "Backend", "Frontend", "Graphic designer"];
+            categoryName=categoryFor[categoryID];
             let foreach = document.getElementById('for-each');
             const blogList = dataJson.data;
             // console.log('blogList = ' + blogList)

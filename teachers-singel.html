@@ -485,8 +485,11 @@
 
 <!--====== BACK TO TP PART ENDS ======-->
 <script>
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
-    function getInformationFromService() {
+    async function getInformationFromService() {
         // const courseId = document.getElementById("hiddenVar").getAttribute("myCourseId");
         // console.log('idId :' + courseId);
 
@@ -508,6 +511,7 @@
         })
             .then(response => response.json())
             .then(data => console.log(data))
+        await sleep(800);
         document.getElementById("inputId1").value = "";
         document.getElementById("inputId2").value = "";
         document.getElementById("commentId").value = "";

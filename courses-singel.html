@@ -599,10 +599,10 @@
             .then(response => response.json())
             .then(data => console.log(data))
             .catch(error => console.error(error));
+        await sleep(800);
         document.getElementById("inputId1").value = "";
         document.getElementById("inputId2").value = "";
         document.getElementById("commentId").value = "";
-        await sleep(800);
         location.reload();
     }
 </script>

@@ -392,7 +392,7 @@
     if (pageId===null || pageId===undefined){
         pageId=1;
     }
-    fetch('https://edubin-axror.herokuapp.com/api/employee/listTeacher/page/'+pageId)
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/listTeacher/page/'+pageId)
         .then((data) => {
             return data.json();
         })
@@ -416,7 +416,7 @@
 
                 const img = document.createElement('img');
                 // img.src = "images/teachers/t-1.jpg";
-                img.src = 'https://edubin-axror.herokuapp.com/api/image/' + teacher.picture;
+                img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + teacher.picture;
                 img.alt = 'Teacher';
                 img.width = 241; // Set width to 200 pixels
                 img.height = 309;

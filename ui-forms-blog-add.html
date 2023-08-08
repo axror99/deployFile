@@ -145,7 +145,7 @@
 
 </body>
 <script>
-    fetch('https://edubin-axror.herokuapp.com/api/category/list')
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
         .then(data => data.json())
         .then((dataJson) => {
 
@@ -171,7 +171,7 @@
         formData.append("picture",document.getElementById("myFile").files[0]);
         let categT= document.getElementById("courseCategory").value;
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/blog/add/'+categT, {
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/blog/add/'+categT, {
             method: "POST",
             body: formData,
             headers: {

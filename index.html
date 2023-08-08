@@ -680,7 +680,7 @@
     <!--====== BACK TO TP PART ENDS ======-->
 
     <script>
-        fetch('https://edubin-axror.herokuapp.com/api/event/list')
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/event/list')
             .then((data) => {
                 return data.json();
             })
@@ -756,7 +756,7 @@
             .catch((err)=>{console.log(err)})
     </script>
     <script>
-        fetch('https://edubin-axror.herokuapp.com/api/course/list/page/'+1)
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/list/page/'+1)
             .then((data) => {
                 return data.json()
             })
@@ -792,7 +792,7 @@
 
 
 
-                    img.src = 'https://edubin-axror.herokuapp.com/api/image/'+course.image;
+                    img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+course.image;
                     img.alt = 'course-Avatar';
                     img.height="277";
                     img.width="370";
@@ -839,7 +839,7 @@
                     const teacherThum = document.createElement('div');
                     teacherThum.classList.add('thum');
                     const teacherImg = document.createElement('img');
-                    teacherImg.src = 'https://edubin-axror.herokuapp.com/api/image/'+realTeacher.picture;
+                    teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+realTeacher.picture;
                     teacherImg.alt = 'avatar';
                     teacherThum.appendChild(teacherImg);
 
@@ -900,7 +900,7 @@
             })
     </script>
     <script>
-        fetch('https://edubin-axror.herokuapp.com/api/category/list')
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
             .then((data) => {return data.json()})
             .then((dataJson) => {
                 console.log('bloglar ')
@@ -922,7 +922,7 @@
                 thumDiv.setAttribute('class', 'news-thum pb-25');
 
                 const imgElem = document.createElement('img');
-                imgElem.setAttribute('src', 'https://edubin-axror.herokuapp.com/api/image/'+oneBLOG.picture);
+                imgElem.setAttribute('src', 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+oneBLOG.picture);
                 imgElem.setAttribute('alt', 'News');
 
                 thumDiv.appendChild(imgElem);
@@ -996,7 +996,7 @@
                     col1Div.setAttribute("class", "col-sm-4");
 
                     let img = document.createElement("img");
-                    img.setAttribute("src", 'https://edubin-axror.herokuapp.com/api/image/'+oneBlog.picture);
+                    img.setAttribute("src", 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+oneBlog.picture);
                     img.setAttribute("alt", "News");
 
                     let newsThumDiv = document.createElement("div");

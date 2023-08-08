@@ -456,7 +456,7 @@
     const urlParams = new URLSearchParams(window.location.search);
     const eventId = urlParams.get('eventId');
 
-    fetch('https://edubin-axror.herokuapp.com/api/event/get/' + eventId)
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/event/get/' + eventId)
         .then((data) => {
             return data.json();
         })
@@ -490,7 +490,7 @@
             document.getElementById('eventStartTime').innerHTML = formStartTime;
             document.getElementById('eventFinishTime').innerHTML = formEndTime;
             let evenPic=document.getElementById('eventPicture');
-            evenPic.setAttribute('src', 'https://edubin-axror.herokuapp.com/api/image/' + dataJson.data.picture);
+            evenPic.setAttribute('src', 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + dataJson.data.picture);
             evenPic.setAttribute('width', '400');
             evenPic.setAttribute('height', '280');
 

@@ -577,7 +577,7 @@
     window.location.replace("login.html");
   }
 
-  fetch('https://edubin-axror.herokuapp.com/home/course/'+token,{
+  fetch('https://edubinplatform-a01d5146e549.herokuapp.com/home/course/'+token,{
     method: 'GET',
     headers: {
       'Accept': 'application/json',
@@ -610,7 +610,7 @@
 
   const req = new XMLHttpRequest();
 
-  req.open('GET', 'https://edubin-axror.herokuapp.com/api/course/get/'+courseId);
+  req.open('GET', 'https://edubinplatform-a01d5146e549.herokuapp.com/api/course/get/'+courseId);
   req.addEventListener('load', function () {
     const res = JSON.parse(req.responseText);
     console.log(res.data);
@@ -634,9 +634,9 @@
     document.getElementById("definition").innerHTML = res.data.definition;
     document.getElementById("teacher-object").innerHTML = realTeacher.myObjective;
     let pic = document.getElementById("coursePicture");
-    pic.innerHTML = `<img src="https://edubin-axror.herokuapp.com/api/image/${res.data.image}" alt="Course" >`;
+    pic.innerHTML = `<img src="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/${res.data.image}" alt="Course" >`;
     let teachPic = document.getElementById("teacherPic");
-    teachPic.innerHTML = `<img src="https://edubin-axror.herokuapp.com/api/image/${realTeacher.picture}"width="40px" height="40px" alt="Course" >`;
+    teachPic.innerHTML = `<img src="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/${realTeacher.picture}"width="40px" height="40px" alt="Course" >`;
 
 
 
@@ -647,7 +647,7 @@
     document.getElementById("price").setAttribute("myCourseId",res.data.price);
 
     let temp3 = document.getElementById("teacher-foto");
-    temp3.innerHTML=`<img src="https://edubin-axror.herokuapp.com/api/image/${realTeacher.picture}" width="170px" height="140px" alt="Instructor">`
+    temp3.innerHTML=`<img src="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/${realTeacher.picture}" width="170px" height="140px" alt="Instructor">`
 
     let temp2 = document.getElementById("teacher-link");
     let socialLinks = [
@@ -727,7 +727,7 @@
       <div class="card-body">
       <video width="320" height="210" controls>
       <source id="course-video"
-      src="https://edubin-axror.herokuapp.com/api/video/${res.data.contents[key].videoName}"
+      src="https://edubinplatform-a01d5146e549.herokuapp.com/api/video/${res.data.contents[key].videoName}"
       type="video/mp4">
       </video>
       </div>
@@ -741,7 +741,7 @@
 
 </script>
 <script>
-  fetch('https://edubin-axror.herokuapp.com/api/course/list')
+  fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/list')
           .then((data) => data.json())
           .then((dataJson) => {
             console.log(dataJson)
@@ -776,7 +776,7 @@
                 var imageDiv = document.createElement("div");
                 imageDiv.classList.add("image");
                 var image = document.createElement("img");
-                let picture = 'https://edubin-axror.herokuapp.com/api/image/'+recommendCourse.image;
+                let picture = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+recommendCourse.image;
 
                 image.src= picture;
                 image.width=140;
@@ -833,7 +833,7 @@
                 image.classList.add('image');
                 const img = document.createElement('img');
 
-                img.src = 'https://edubin-axror.herokuapp.com/api/image/'+recommendCourse.image;
+                img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+recommendCourse.image;
                 img.alt = 'course-Avatar';
                 img.height=277;
                 img.width=370;
@@ -880,7 +880,7 @@
                 const teacherThum = document.createElement('div');
                 teacherThum.classList.add('thum');
                 const teacherImg = document.createElement('img');
-                teacherImg.src = 'https://edubin-axror.herokuapp.com/api/image/'+recTeacher.picture;
+                teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+recTeacher.picture;
                 teacherImg.alt = 'avatar';
                 teacherThum.appendChild(teacherImg);
 
@@ -968,7 +968,7 @@
     var options = {year: 'numeric', month: 'long', day: 'numeric'};
     var today = new Date().toLocaleDateString('en-US', options);
 
-    fetch('https://edubin-axror.herokuapp.com/api/comment/course/'+courseId1,{
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/comment/course/'+courseId1,{
       method: 'POST',
       headers: {
         'Accept': 'application/json',

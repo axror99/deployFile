@@ -136,7 +136,7 @@
     let blogId = ulrParam.get("blogId");
     console.log(blogId);
 
-    fetch('https://edubin-axror.herokuapp.com/api/blog/one/' + blogId)
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/blog/one/' + blogId)
         .then(data => data.json())
         .then((dataJson) => {
             console.log(dataJson);
@@ -144,7 +144,7 @@
             let currentCourse = document.getElementById('currentCourse');
             const img = document.createElement("img");
             img.classList.add("card-img-top");
-            img.src = 'https://edubin-axror.herokuapp.com/api/image/' + dataJson.data.picture;
+            img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + dataJson.data.picture;
             img.alt = "Unsplash";
             img.height = 200;
             img.width = 200;
@@ -198,7 +198,7 @@
 
 </script>
 <script>
-    fetch('https://edubin-axror.herokuapp.com/api/category/list')
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
         .then(data => data.json())
         .then((dataJson) => {
 
@@ -224,7 +224,7 @@
 
     function myFunction() {
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/blog/delete/' + blogId, {
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/blog/delete/' + blogId, {
             method: "DELETE",
             headers: {
                 'Accept': 'application/json',
@@ -256,7 +256,7 @@
             formData.append("picture", docFile);
         }
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/blog/update/' + blogId, {
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/blog/update/' + blogId, {
             method: "PUT",
             body: formData,
             headers: {

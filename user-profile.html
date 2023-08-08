@@ -252,7 +252,7 @@
     window.location.replace("login.html");
   }
   let myStatus;
-  fetch('https://edubin-axror.herokuapp.com/home/me/'+token,{
+  fetch('https://edubinplatform-a01d5146e549.herokuapp.com/home/me/'+token,{
     headers: {
       'Authorization': token
     }
@@ -273,7 +273,7 @@
     let pic =document.getElementById('user-oldPicture');
     if (dataJson.picture!==null){
       pic.innerHTML = `<!--<img src="http://localhost:8080/api/image/${dataJson.picture}" width="290px" height="193px"  alt="Me" >-->`;
-      pic.innerHTML = `<img src="https://edubin-axror.herokuapp.com/api/image/${dataJson.picture}" width="290px" height="193px"  alt="Me" >`;
+      pic.innerHTML = `<img src="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/${dataJson.picture}" width="290px" height="193px"  alt="Me" >`;
     }else {
       pic.innerHTML = `<img src="images/images3.png" width="290px" height="193px" alt="Me">`;
     }

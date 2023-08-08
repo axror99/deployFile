@@ -127,7 +127,7 @@
 
 </body>
 <script>
-  fetch('https://edubin-axror.herokuapp.com/api/event/list')
+  fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/event/list')
           .then((data) => {
             return data.json();
           })
@@ -149,7 +149,7 @@
               const div3 = document.createElement("div");
               div3.className = "event-thum";
               const img = document.createElement("img");
-              img.src = "https://edubin-axror.herokuapp.com/api/image/"+event.picture;
+              img.src = "https://edubinplatform-a01d5146e549.herokuapp.com/api/image/"+event.picture;
               // img.src = "images/event/e-1.jpg";
               img.width=100;
               img.height=150;

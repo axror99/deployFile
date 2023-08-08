@@ -460,7 +460,7 @@
         var options = {year: 'numeric', month: 'long', day: 'numeric'};
         var today = new Date().toLocaleDateString('en-US', options);
 
-        fetch('https://edubin-axror.herokuapp.com/api/comment/blog/' + blogID, {
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/comment/blog/' + blogID, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -490,7 +490,7 @@
         blogID = 1;
     }
 
-    fetch('https://edubin-axror.herokuapp.com/api/category/list')
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson.data)
@@ -521,7 +521,7 @@
                 thumDiv.setAttribute('class', 'thum');
 
                 const imgTag = document.createElement('img');
-                let str2 = 'https://edubin-axror.herokuapp.com/api/image/' + oneBlog.picture;
+                let str2 = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + oneBlog.picture;
                 imgTag.setAttribute('src', str2);
                 imgTag.setAttribute('width', "92px");
                 imgTag.setAttribute('height', "92px");
@@ -560,7 +560,7 @@
         .catch((err) => {
             console.log(err)
         })
-    fetch('https://edubin-axror.herokuapp.com/api/blog/one/' + blogID)
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/blog/one/' + blogID)
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson)
@@ -576,7 +576,7 @@
             element.appendChild(numberComments);
 
             let picTg = document.getElementById('blogPicture');
-            picTg.innerHTML = `<img src="https://edubin-axror.herokuapp.com/api/image/${dataJson.data.picture}"width="770px" height="470px" alt="Course" >`;
+            picTg.innerHTML = `<img src="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/${dataJson.data.picture}"width="770px" height="470px" alt="Course" >`;
 
             let blogDate = dataJson.data.date;
 

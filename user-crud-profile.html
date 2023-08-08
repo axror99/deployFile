@@ -122,7 +122,7 @@
     if ( token === undefined || token === null) {
         window.location.replace("login.html");
     }
-    fetch('https://edubin-axror.herokuapp.com/home/me/' + token,{
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/home/me/' + token,{
         headers: {
             'Authorization': token
         }
@@ -136,7 +136,7 @@
             const imageElement = document.getElementById('changePicture');
 
             if (dataJson.picture!=null){
-                currentPicture="https://edubin-axror.herokuapp.com/api/image/"+dataJson.picture;
+                currentPicture="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/"+dataJson.picture;
             }else {
                 currentPicture="images/images3.png";
             }
@@ -160,7 +160,7 @@
         if (document.getElementById("user-picture").files[0]!==null && document.getElementById("user-picture").files[0]!==undefined){
             formData.append("picture",document.getElementById("user-picture").files[0]);
         }
-        fetch('https://edubin-axror.herokuapp.com/api/employee/update/himself/'+userId,{
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/update/himself/'+userId,{
             method: 'PUT',
             body: formData,
         })

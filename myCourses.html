@@ -425,7 +425,7 @@
         // const urlParams = new URLSearchParams(window.location.search);
         // const userId = urlParams.get('userId');
     // fetch('http://localhost:8080/home/course/'+token,{
-    fetch('https://edubin-axror.herokuapp.com/home/course/'+token,{
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/home/course/'+token,{
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -489,7 +489,7 @@
                     image.classList.add('image');
                     const img = document.createElement('img');
 
-                    img.src = 'https://edubin-axror.herokuapp.com/api/image/'+course.image;
+                    img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+course.image;
                     // img.src = 'http://localhost:8080/api/image/'+course.image;
                     img.alt = 'course-Avatar';
                     image.appendChild(img);
@@ -532,7 +532,7 @@
                     teacherThum.classList.add('thum');
                     const teacherImg = document.createElement('img');
 
-                    teacherImg.src = 'https://edubin-axror.herokuapp.com/api/image/'+realTeacher.picture;
+                    teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+realTeacher.picture;
                     // teacherImg.src = 'http://localhost:8080/api/image/'+realTeacher.picture;
                     teacherImg.alt = 'avatar';
                     teacherThum.appendChild(teacherImg);

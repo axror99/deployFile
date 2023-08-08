@@ -368,7 +368,7 @@
 </body>
 
 <script>
-    fetch('https://edubin-axror.herokuapp.com/api/course/list')
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/list')
     .then(data=>data.json())
     .then((dataJson)=>{
         console.log(dataJson)
@@ -446,7 +446,7 @@
 
     function deleteCategory(){
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/course/delete/'+deleteCourseId,{
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/delete/'+deleteCourseId,{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',

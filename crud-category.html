@@ -431,7 +431,7 @@
 
 </body>
 <script>
-    fetch('https://edubin-axror.herokuapp.com/api/category/list')
+    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
         .then((data)=>{
             return data.json();
         })
@@ -510,7 +510,7 @@
 
     function deleteCategory(){
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/category/delete/'+categoryName,{
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/delete/'+categoryName,{
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -527,7 +527,7 @@
     function updateCategory(){
         console.log(categoryName)
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/category/update/'+categoryName,{
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/update/'+categoryName,{
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -546,7 +546,7 @@
 
     function addCategory(){
         let token = localStorage.getItem('access_token');
-        fetch('https://edubin-axror.herokuapp.com/api/category/add',{
+        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/add',{
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

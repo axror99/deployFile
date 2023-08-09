@@ -47,7 +47,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min/js"></script>
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.min1.css">
-<!--    <script src="fontawesome-free-6.4.0-web/js11/all.min1.js"></script>-->
+    <!--    <script src="fontawesome-free-6.4.0-web/js11/all.min1.js"></script>-->
 </head>
 <style>
     #my-icon {
@@ -83,7 +83,8 @@
                 <div class="col-lg-6">
                     <div class="header-contact text-lg-left text-center">
                         <ul>
-                            <li><img src="images/all-icon/map.png" alt="icon"><span>3-home, Beruniy street, Tashkent</span></li>
+                            <li><img src="images/all-icon/map.png"
+                                     alt="icon"><span>3-home, Beruniy street, Tashkent</span></li>
                             <li><img src="images/all-icon/email.png" alt="icon"><span>ahror060799@gmail.com</span></li>
                         </ul>
                     </div>
@@ -119,7 +120,7 @@
                             </div>
                         </div>
                         <div class="button float-left">
-<!--                            <a href="#" class="main-btn">Apply Now</a>-->
+                            <!--                            <a href="#" class="main-btn">Apply Now</a>-->
                         </div>
                     </div>
                 </div>
@@ -143,7 +144,7 @@
                         <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item">
-                                    <a  href="index.html">Home</a>
+                                    <a href="index.html">Home</a>
 
                                 </li>
                                 <li class="nav-item">
@@ -181,7 +182,8 @@
                     <div class="right-icon text-right">
                         <ul>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i><span>0</span></a></li>
-                            <li><a href="user-profile.html"><i id="my-icon" style='font-size:24px'  class="fas">&#xf015;</i></a></li>
+                            <li><a href="user-profile.html"><i id="my-icon" style='font-size:24px'
+                                                               class="fas">&#xf015;</i></a></li>
                         </ul>
                     </div> <!-- right icon -->
                 </div>
@@ -575,7 +577,7 @@
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-   async function getInformationFromService() {
+    async function getInformationFromService() {
         const courseId1 = document.getElementById("hiddenVar").getAttribute("myCourseId");
         console.log('idId :' + courseId1);
         console.log(courseId);
@@ -618,11 +620,11 @@
         const res = JSON.parse(req.responseText);
         console.log(res.data);
 
-        let realTeacher ;
-        for (index1 in res.data.teacher){
+        let realTeacher;
+        for (index1 in res.data.teacher) {
             let oneTeacher = res.data.teacher[index1];
-            if (oneTeacher.roles.includes("TEACHER")){
-                realTeacher=oneTeacher;
+            if (oneTeacher.roles.includes("TEACHER")) {
+                realTeacher = oneTeacher;
                 break;
             }
         }
@@ -705,7 +707,7 @@
         temp4.innerHTML = str4;
         let temp = document.getElementById("forEach");
         let str = "";
-
+        //##########
         for (key in res.data.contents) {
             console.log('tushyapdi')
             str += `<div class="card">
@@ -721,9 +723,9 @@
         </li>
       </ul>
     </a>
-  </div>
-
-  <div id="collapse" class="collapse" aria-labelledby="heading${key}"
+  </div>`
+            if (res.data.price === null) {
+                str += `<div id="collapse" class="collapse" aria-labelledby="heading${key}"
        data-parent="#accordionExample">
     <div class="card-body">
       <p>${res.data.contents[key].definition}</p>
@@ -736,6 +738,21 @@
       </video>
     </div>
   </div> </div>`
+            } else {
+                str += `<div id="collapse${key}" class="collapse" aria-labelledby="heading${key}"
+       data-parent="#accordionExample">
+    <div class="card-body">
+      <p>${res.data.contents[key].definition}</p>
+    </div>
+    <div class="card-body">
+      <video width="320" height="210" controls>
+        <source id="course-video"
+                src="../static/video/${res.data.contents[key].videoName}"
+                type="video/mp4">
+      </video>
+    </div>
+  </div> </div>`
+            }
         }
         temp.innerHTML = str;
 
@@ -763,41 +780,41 @@
             console.log(dataJson)
             let makeLikes = document.getElementById('makeLike');
             let courses = document.getElementById('courses');
-            let max = dataJson.data.length-1;
-            let  mySet = new Set();
-            let courId=parseInt(courseId);
-            for (let i = 0; i <9; i++) {
-               let randomNumber = Math.floor(Math.random() * (max) + 1);
-                if (courId !== randomNumber){
+            let max = dataJson.data.length - 1;
+            let mySet = new Set();
+            let courId = parseInt(courseId);
+            for (let i = 0; i < 9; i++) {
+                let randomNumber = Math.floor(Math.random() * (max) + 1);
+                if (courId !== randomNumber) {
                     mySet.add(randomNumber);
                 }
             }
-            let count =0;
+            let count = 0;
             console.log(mySet)
-            for (let indexNumber of mySet ) {
+            for (let indexNumber of mySet) {
                 const recommendCourse = dataJson.data[indexNumber];
-                let recTeacher ;
-                for(index11 in recommendCourse.teacher){
-                    let oneHuman=recommendCourse.teacher[index11];
-                    const hasTrue= oneHuman.roles.some(function(checkTeacher) {
+                let recTeacher;
+                for (index11 in recommendCourse.teacher) {
+                    let oneHuman = recommendCourse.teacher[index11];
+                    const hasTrue = oneHuman.roles.some(function (checkTeacher) {
                         return checkTeacher.includes("TEACHER");
                     });
-                    if (hasTrue){
-                        recTeacher=oneHuman;
+                    if (hasTrue) {
+                        recTeacher = oneHuman;
                     }
                 }
-                if (count<3) {
+                if (count < 3) {
                     var outerDiv = document.createElement("div");
                     outerDiv.classList.add("singel-makelike", "mt-20");
 
                     var imageDiv = document.createElement("div");
                     imageDiv.classList.add("image");
                     var image = document.createElement("img");
-                    let picture = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+recommendCourse.image;
+                    let picture = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + recommendCourse.image;
 
-                    image.src= picture;
-                    image.width=140;
-                    image.height=140;
+                    image.src = picture;
+                    image.width = 140;
+                    image.height = 140;
 
                     image.setAttribute("alt", "Image");
                     imageDiv.appendChild(image);
@@ -806,7 +823,7 @@
                     var contDiv = document.createElement("div");
                     contDiv.classList.add("cont");
                     var link = document.createElement("a");
-                    link.setAttribute("href", "courses-singel.html?courseId="+recommendCourse.id);
+                    link.setAttribute("href", "courses-singel.html?courseId=" + recommendCourse.id);
                     var heading = document.createElement("h4");
                     heading.textContent = recommendCourse.name;
                     link.appendChild(heading);
@@ -818,15 +835,15 @@
                     var icon = document.createElement("i");
                     icon.classList.add("fa", "fa-user");
                     link2.appendChild(icon);
-                    const numberStudent = recommendCourse.teacher.length-1;
-                    link2.appendChild(document.createTextNode(""+numberStudent));
+                    const numberStudent = recommendCourse.teacher.length - 1;
+                    link2.appendChild(document.createTextNode("" + numberStudent));
                     listItem1.appendChild(link2);
                     list.appendChild(listItem1);
 
                     var listItem2 = document.createElement("li");
-                    if (recommendCourse.price !==null){
-                        listItem2.textContent = "$ "+recommendCourse.price;
-                    }else {
+                    if (recommendCourse.price !== null) {
+                        listItem2.textContent = "$ " + recommendCourse.price;
+                    } else {
                         listItem2.textContent = "free";
                     }
                     list.appendChild(listItem2);
@@ -835,8 +852,8 @@
                     outerDiv.appendChild(contDiv);
                     makeLikes.appendChild(outerDiv);
 
-                }else if (count>2 && count<5){
-                    console.log('count = '+count)
+                } else if (count > 2 && count < 5) {
+                    console.log('count = ' + count)
                     const col = document.createElement('div');
                     col.classList.add('col-md-6');
 
@@ -850,19 +867,19 @@
                     image.classList.add('image');
                     const img = document.createElement('img');
 
-                    img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+recommendCourse.image;
+                    img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + recommendCourse.image;
                     img.alt = 'course-Avatar';
-                    img.height=277;
-                    img.width=370;
+                    img.height = 277;
+                    img.width = 370;
                     image.appendChild(img);
 
                     const price = document.createElement('div');
                     price.classList.add('price');
                     const span = document.createElement('span');
-                    if (recommendCourse.price===null){
-                        span.textContent= 'Free';
-                    }else{
-                        span.textContent = '$'+recommendCourse.price;
+                    if (recommendCourse.price === null) {
+                        span.textContent = 'Free';
+                    } else {
+                        span.textContent = '$' + recommendCourse.price;
                     }
                     price.appendChild(span);
 
@@ -886,7 +903,7 @@
 
                     const titleLink = document.createElement('a');
                     // titleLink.href = course.link;
-                    titleLink.href = 'courses-singel.html?courseId='+recommendCourse.id;
+                    titleLink.href = 'courses-singel.html?courseId=' + recommendCourse.id;
                     const title = document.createElement('h4');
                     title.textContent = recommendCourse.name;
                     titleLink.appendChild(title);
@@ -897,7 +914,7 @@
                     const teacherThum = document.createElement('div');
                     teacherThum.classList.add('thum');
                     const teacherImg = document.createElement('img');
-                    teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+recTeacher.picture;
+                    teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + recTeacher.picture;
                     teacherImg.alt = 'avatar';
                     teacherThum.appendChild(teacherImg);
 
@@ -919,7 +936,7 @@
                     studentsCountIcon.classList.add('fa', 'fa-user');
                     const studentsCountSpan = document.createElement('span');
                     // studentsCountSpan.textContent = course.users;
-                    studentsCountSpan.textContent = ""+(recommendCourse.teacher.length-1);
+                    studentsCountSpan.textContent = "" + (recommendCourse.teacher.length - 1);
                     studentsCountLink.appendChild(studentsCountIcon);
                     studentsCountLink.appendChild(studentsCountSpan);
                     studentsCountLi.appendChild(studentsCountLink);
@@ -955,9 +972,9 @@
                 ++count;
             }
         })
-    .catch((err)=>{
-        console.log(err)
-    })
+        .catch((err) => {
+            console.log(err)
+        })
 </script>
 
 

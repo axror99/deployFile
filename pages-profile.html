@@ -535,7 +535,7 @@
 
 </body>
 <script>
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/list')
+    fetch('https://akhror-leetcode.azurewebsites.net/api/employee/list')
         .then(data => data.json())
         .then((dataJson) => {
             console.log(dataJson.data);
@@ -659,7 +659,7 @@
         formData.append("myObjective", document.getElementById("myObjective").value);
         formData.append("roles", selectedValues22);
         formData.append("permissionList", selectedValues11);
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/add', {
+        fetch('https://akhror-leetcode.azurewebsites.net/api/employee/add', {
             method: "POST",
             body: formData,
             headers: {
@@ -716,7 +716,7 @@
         formData.append("roles", selectedValues2);
         formData.append("permissionList", selectedValues);
 
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/update/' + employeeId, {
+        fetch('https://akhror-leetcode.azurewebsites.net/api/employee/update/' + employeeId, {
             method: "PUT",
             body: formData,
             headers: {
@@ -731,7 +731,7 @@
 
     function deleteEmployee() {
         let token = localStorage.getItem('access_token');
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/delete/' + employeeId, {
+        fetch('https://akhror-leetcode.azurewebsites.net/api/employee/delete/' + employeeId, {
             method: "DELETE",
             headers: {
                 'Accept': 'application/json',

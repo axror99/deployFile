@@ -524,7 +524,7 @@
         var options = {year: 'numeric', month: 'long', day: 'numeric'};
         var today = new Date().toLocaleDateString('en-US', options);
 
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/comment/merchandise/' + pageId, {
+        fetch('https://akhror-leetcode.azurewebsites.net/api/comment/merchandise/' + pageId, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -550,7 +550,7 @@
 
     const urlParam = new URLSearchParams(window.location.search);
     let pageId = urlParam.get("pageId");
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/product/product/' + pageId)
+    fetch('https://akhror-leetcode.azurewebsites.net/api/product/product/' + pageId)
         .then((data) => {
             return data.json();
         })
@@ -583,11 +583,11 @@
                 innerDiv.classList.add("shop-image");
 
                 const a = document.createElement("a");
-                a.href = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + myArray[i];
+                a.href = 'https://akhror-leetcode.azurewebsites.net/api/image/' + myArray[i];
                 a.classList.add("shop-items");
 
                 const img = document.createElement("img");
-                img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + myArray[i];
+                img.src = 'https://akhror-leetcode.azurewebsites.net/api/image/' + myArray[i];
                 img.width = 400;
                 img.height = 400;
                 img.alt = "Shop";
@@ -624,7 +624,7 @@
                 span1.setAttribute("class", "shop-thum");
 
                 const image1 = document.createElement("img");
-                let str4 = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + myArray[i];
+                let str4 = 'https://akhror-leetcode.azurewebsites.net/api/image/' + myArray[i];
                 image1.setAttribute("src", str4);
                 image1.setAttribute('width', 80);
                 image1.setAttribute('height', 80);
@@ -711,7 +711,7 @@
 </script>
 
 <script>
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/product/list/recommend')
+    fetch('https://akhror-leetcode.azurewebsites.net/api/product/list/recommend')
         .then((data) => {
             return data.json()
         })
@@ -730,7 +730,7 @@
                 image.classList.add("image");
 
                 const img = document.createElement("img");
-                img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+product.picture;
+                img.src = 'https://akhror-leetcode.azurewebsites.net/api/image/'+product.picture;
                 img.width=280;
                 img.height=280;
                 img.alt = "Publication";

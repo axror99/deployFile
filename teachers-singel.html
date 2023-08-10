@@ -496,7 +496,7 @@
         var options = {year: 'numeric', month: 'long', day: 'numeric'};
         var today = new Date().toLocaleDateString('en-US', options);
 
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/comment/teacher/' + teacherID, {
+        fetch('https://akhror-leetcode.azurewebsites.net/api/comment/teacher/' + teacherID, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -522,7 +522,7 @@
     let ulrParam = new URLSearchParams(window.location.search);
     const teacherID = ulrParam.get("teacherId");
 
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/get/teacher/'+teacherID,{
+    fetch('https://akhror-leetcode.azurewebsites.net/api/course/get/teacher/'+teacherID,{
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -563,7 +563,7 @@
                 image.classList.add('image');
                 const img = document.createElement('img');
 
-                img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+course.image;
+                img.src = 'https://akhror-leetcode.azurewebsites.net/api/image/'+course.image;
                 img.alt = 'course-Avatar';
                 image.appendChild(img);
 
@@ -610,7 +610,7 @@
                 const teacherImg = document.createElement('img');
                 // teacherImg.src = course.teacher.picture;
                 // teacherImg.src = 'images/course/teacher/t-1.jpg';
-                teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+realTeacher.picture;
+                teacherImg.src = 'https://akhror-leetcode.azurewebsites.net/api/image/'+realTeacher.picture;
                 teacherImg.alt = 'avatar';
                 teacherThum.appendChild(teacherImg);
 
@@ -670,14 +670,14 @@
             console.log(err)
         })
 
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/teacher/' + teacherID)
+    fetch('https://akhror-leetcode.azurewebsites.net/api/employee/teacher/' + teacherID)
         .then((data) => {
             return data.json();
         })
         .then((dataJson) => {
             console.log(dataJson);
             let pic = document.getElementById('teacherPic');
-            pic.innerHTML = `<img src="https://edubinplatform-a01d5146e549.herokuapp.com/api/image/${dataJson.data.picture}" alt="Teachers" >`;
+            pic.innerHTML = `<img src="https://akhror-leetcode.azurewebsites.net/api/image/${dataJson.data.picture}" alt="Teachers" >`;
             document.getElementById('teacherName').innerHTML = dataJson.data.name;
             document.getElementById('teacherProfession').innerHTML = dataJson.data.profession;
             document.getElementById('teacherAbout').innerHTML = dataJson.data.about;

@@ -52,7 +52,7 @@
 <body>
 <script>
     let token = localStorage.getItem('access_token');
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/buy/check',{
+    fetch('https://akhror-leetcode.azurewebsites.net/buy/check',{
         method: 'GET',
         headers: {
             'Accept': 'application/json',
@@ -133,7 +133,7 @@
     function sendBuy() {
         let token = localStorage.getItem('access_token');
         console.log(courseId);
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/buy/'+courseId, {
+        fetch('https://akhror-leetcode.azurewebsites.net/buy/'+courseId, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

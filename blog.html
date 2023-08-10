@@ -430,7 +430,7 @@
 
 
     // fetch('http://localhost:8080/api/category/list')
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
+    fetch('https://akhror-leetcode.azurewebsites.net/api/category/list')
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson.data)
@@ -481,7 +481,7 @@
                 // console.log(toImage);
 
                 // let str2 = 'http://localhost:8080/api/image/' + oneBlog.picture;
-                let str2 = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + oneBlog.picture;
+                let str2 = 'https://akhror-leetcode.azurewebsites.net/api/image/' + oneBlog.picture;
 
                 imgTag.setAttribute('src', str2);
                 imgTag.setAttribute('width', "92px");
@@ -528,7 +528,7 @@
     async function fetchWithPause() {
         await sleep(500);
 
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/blog/list/page/' + (categoryID) + "/" + pageID)
+        fetch('https://akhror-leetcode.azurewebsites.net/api/blog/list/page/' + (categoryID) + "/" + pageID)
         .then((data) => data.json())
         .then((dataJson) => {
             console.log(dataJson.data)
@@ -548,7 +548,7 @@
                 blogThumDiv.classList.add("blog-thum");
 
                 const img = document.createElement("img");
-                img.src = "https://edubinplatform-a01d5146e549.herokuapp.com/api/image/" + blog.picture;
+                img.src = "https://akhror-leetcode.azurewebsites.net/api/image/" + blog.picture;
                 // img.src = "http://localhost:8080/api/image/" + blog.picture;
                 img.alt = "Blog";
 

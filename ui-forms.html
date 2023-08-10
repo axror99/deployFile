@@ -195,7 +195,7 @@
     const courseID = ulrParam.get("courseId");
     console.log(courseID);
     let token = localStorage.getItem('access_token');
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/get/'+courseID,{
+    fetch('https://akhror-leetcode.azurewebsites.net/api/course/get/'+courseID,{
         headers: {
             'authorization': token
         }
@@ -207,7 +207,7 @@
         let currentCourse = document.getElementById('currentCourse');
         const img = document.createElement("img");
         img.classList.add("card-img-top");
-        img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+dataJson.data.image;
+        img.src = 'https://akhror-leetcode.azurewebsites.net/api/image/'+dataJson.data.image;
         img.alt = "Unsplash";
         img.height=200;
         img.width=200;
@@ -281,7 +281,7 @@
     })
     .catch(err=>console.log(err));
 
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/category/list')
+    fetch('https://akhror-leetcode.azurewebsites.net/api/category/list')
         .then(data => data.json())
         .then((dataJson) => {
 
@@ -296,7 +296,7 @@
         })
         .catch(err => console.log(err))
 
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/employee/listTeacher')
+    fetch('https://akhror-leetcode.azurewebsites.net/api/employee/listTeacher')
         .then(data => data.json())
         .then((dataJson) => {
             console.log(dataJson)
@@ -337,7 +337,7 @@
         formData.append("definition", document.getElementById("courseDefinition").value);
 
         let token = localStorage.getItem('access_token');
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/update/'+courseID,{
+        fetch('https://akhror-leetcode.azurewebsites.net/api/course/update/'+courseID,{
             method: "PUT",
             body: formData,
             headers: {

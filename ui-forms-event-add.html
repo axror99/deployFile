@@ -170,7 +170,7 @@
             formData.append("picture", docFile);
         }
         let token = localStorage.getItem('access_token');
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/event/add', {
+        fetch('https://akhror-leetcode.azurewebsites.net/api/event/add', {
             method: "POST",
             body: formData,
             headers: {

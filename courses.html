@@ -424,7 +424,7 @@
     if (pageID === undefined || pageID === null) {
         pageID = 1;
     }
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/list/page/' + pageID)
+    fetch('https://akhror-leetcode.azurewebsites.net/api/course/list/page/' + pageID)
         .then((data) => {
             return data.json()
         })
@@ -463,7 +463,7 @@
                 // img.src = '../static/images/'+course.image;
                 // <img src="../static/images/${res.data.teacher.picture}"
 
-                img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + course.image;
+                img.src = 'https://akhror-leetcode.azurewebsites.net/api/image/' + course.image;
                 img.alt = 'course-Avatar';
                 img.height = "277";
                 img.width = "370";
@@ -510,7 +510,7 @@
                 const teacherThum = document.createElement('div');
                 teacherThum.classList.add('thum');
                 const teacherImg = document.createElement('img');
-                teacherImg.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/' + realTeacher.picture;
+                teacherImg.src = 'https://akhror-leetcode.azurewebsites.net/api/image/' + realTeacher.picture;
                 teacherImg.alt = 'avatar';
                 teacherThum.appendChild(teacherImg);
 

@@ -161,7 +161,7 @@
     let courseID = ulrParam.get("courseId");
     console.log(courseID);
 
-    fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/course/get/'+courseID)
+    fetch('https://akhror-leetcode.azurewebsites.net/api/course/get/'+courseID)
         .then(data=>data.json())
         .then((dataJson)=>{
             console.log(dataJson);
@@ -169,7 +169,7 @@
             let currentCourse = document.getElementById('currentCourse');
             const img = document.createElement("img");
             img.classList.add("card-img-top");
-            img.src = 'https://edubinplatform-a01d5146e549.herokuapp.com/api/image/'+dataJson.data.image;
+            img.src = 'https://akhror-leetcode.azurewebsites.net/api/image/'+dataJson.data.image;
             img.alt = "Unsplash";
             img.height=200;
             img.width=200;
@@ -278,7 +278,7 @@
         console.log(contentId)
         console.log(courseID)
         if (contentId==="0"){
-            fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/content/add/'+courseID,{
+            fetch('https://akhror-leetcode.azurewebsites.net/api/content/add/'+courseID,{
                 method: "POST",
                 body: formData,
                 headers: {
@@ -294,7 +294,7 @@
                 .catch(err=>console.log(err))
 
         }else {
-            fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/content/update/'+contentId,{
+            fetch('https://akhror-leetcode.azurewebsites.net/api/content/update/'+contentId,{
                 method: "PUT",
                 body: formData,
                 headers: {
@@ -322,7 +322,7 @@
         let contentId = document.getElementById('contentId').value;
         console.log("axror")
         console.log(contentId)
-        fetch('https://edubinplatform-a01d5146e549.herokuapp.com/api/content/delete/'+contentId,{
+        fetch('https://akhror-leetcode.azurewebsites.net/api/content/delete/'+contentId,{
             method:"DELETE",
             headers:{
                 'Accept': 'application/json',

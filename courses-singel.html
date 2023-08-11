@@ -724,7 +724,7 @@
       </ul>
     </a>
   </div>`
-            if (res.data.price === null) {
+            if (res.data.price !== null) {
                 str += `<div id="collapse" class="collapse" aria-labelledby="heading${key}"
        data-parent="#accordionExample">
     <div class="card-body">
